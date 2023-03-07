@@ -1,6 +1,20 @@
+import { FC } from 'react';
 import { useIntl } from 'react-intl';
 
-export function Alert({ messageId, variant }) {
+export interface AlertProps {
+  messageId: string,
+  variant: 
+    | 'danger'
+    | 'dark'
+    | 'info'
+    | 'light'
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'warning'
+}
+
+export const Alert: FC<AlertProps> = ({ messageId, variant }) => {
   const { formatMessage } = useIntl();
 
   if (!messageId) {

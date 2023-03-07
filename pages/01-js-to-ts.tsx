@@ -7,7 +7,7 @@ const JsToTs: NextPage = () => {
     <div>
       <h2 className="my-4">Converting JavaScript to TypeScript</h2>
 
-      <Alert messageId="hello-js" variant="primary" />
+      <Alert messageId="hello-tsx" variant="primary" />
     </div>
   );
 };
