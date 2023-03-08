@@ -55,5 +55,10 @@ export const extraIngredients: ExtraIngredients = {
 export const getExtraIngredient = (name: string): ExtraIngredient => {
   const extraIngredient = extraIngredients[name];
 
+  if(!extraIngredient) {
+    return {name: name, price:0};
+    console.warn("error adding extra ingredient, not found");
+  }
+
   return extraIngredient;
 };
