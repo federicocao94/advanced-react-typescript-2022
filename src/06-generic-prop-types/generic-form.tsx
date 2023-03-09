@@ -1,13 +1,23 @@
-import { FC, useState } from 'react';
+import { FC, ReactElement, useState } from 'react';
 import { LabeledInput } from '../components';
 
-type Props = {
+type Props<TData> = {
   header: string;
-  initialValues: any;
-  onSubmit: (values: any) => void;
+  initialValues: TData;
+  onSubmit: (values: TData) => void;
 };
 
-export const GenericForm: FC<Props> = ({ header, initialValues, onSubmit }) => {
+
+/*
+  replacing any as type for initialValues to force initialValues and onSubmit param to have the same type, 
+  TData is that generic type. 
+  TData will be something like Record<string, string | number | undefined> which means it's basically a map with string as key
+   and strings or number as values
+*/
+
+export function GenericForm<
+  TData extends Record<string, string | number | undefined>
+>({ header, initialValues, onSubmit }: Props<TData>): ReactElement {
   const [values, setValues] = useState(initialValues);
 
   return (
