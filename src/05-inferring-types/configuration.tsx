@@ -1,10 +1,22 @@
 import { FC } from 'react';
 import { LabeledInput } from '../components';
 
-function getConfigItem(section: string, item: string) {
-  const config: any = {
+/*
+  using generic types (with extends) to configure getConfigItem function so that it could be called safely to get items from config object through config[key1][key2]
+
+  TSection type to be defined wich extends current keys of the object
+  TItem must be a key wich is present in config[smt] objects, such as street, houseNumber... 
+
+  typescript can infer valid keys from existing objects not only object shape
+*/
+function getConfigItem<
+  TSection extends keyof typeof config, 
+  TItem extends keyof typeof config[TSection]
+>(section: TSection, item: TItem) {
+  const config = {
     user: {
       firstName: 'John',
+      lastName: 'Doe',
       birthDate: new Date(1990, 6, 10),
     },
     address: {
@@ -20,9 +32,9 @@ function getConfigItem(section: string, item: string) {
 export const Configuration: FC = () => {
   const firstName = getConfigItem('user', 'firstName');
   const lastName = getConfigItem('user', 'lastName');
-  const birthDate = getConfigItem('user', 'birthDate');
+  const birthDate = getConfigItem('user', 'birthDate').toDateString();
 
-  const employer = getConfigItem('employer', 'name');
+  //const employer = getConfigItem('employer', 'name');
 
   const street = getConfigItem('address', 'street');
   const houseNumber = getConfigItem('address', 'houseNumber');
