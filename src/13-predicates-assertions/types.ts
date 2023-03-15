@@ -4,8 +4,14 @@ export type Book = {
   description: string;
 };
 
-export function isBook(book: ItemsOnSale): book is Book {
-  return book.type === 'book';
+export function isBook(item: ItemsOnSale): item is Book {
+  return item.type === 'book';
+}
+
+export function assertBook(item: ItemsOnSale): asserts item is Book {
+  if(!isBook(item)) {
+    throw new Error('Item is not a book');
+  }
 }
 
 export type Magazine = {
@@ -13,8 +19,14 @@ export type Magazine = {
   title: string;
 };
 
-export function isMagazine(magazine: ItemsOnSale): magazine is Magazine {
-  return magazine.type === 'magazine';
+export function isMagazine(item: ItemsOnSale): item is Magazine {
+  return item.type === 'magazine';
+}
+
+export function assertMagazine(item: ItemsOnSale): asserts item is Magazine {
+  if(!isMagazine(item)) {
+    throw new Error('Item is not a magazine');
+  }
 }
 
 export type Pen = {
@@ -22,8 +34,14 @@ export type Pen = {
   color: string;
 };
 
-export function isPen(pen: ItemsOnSale): pen is Pen {
-  return pen.type === 'pen';
+export function isPen(item: ItemsOnSale): item is Pen {
+  return item.type === 'pen';
+}
+
+export function assertPen(item: ItemsOnSale): asserts item is Pen {
+  if(!isPen(item)) {
+    throw new Error('Item is not a pen');
+  }
 }
 
 export type ItemsOnSale = Book | Magazine | Pen;
