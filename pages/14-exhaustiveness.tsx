@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
-import { BookShop } from '../src/13-predicates-assertions/book-shop';
+import { BookShop } from '../src/14-exhaustiveness/book-shop';
 
 const PredicatesAssertions: NextPage = () => {
   return (
     <div>
-      <h2 className="my-4">Predicates, Assertions</h2>
+      <h2 className="my-4">Exhaustiveness Checking</h2>
       <BookShop />
     </div>
   );

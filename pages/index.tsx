@@ -61,7 +61,8 @@ const mainMenu = [
   },
   {
     label: '15 - Exhaustiveness checking',
-    href: '/13-predicates-assertions',
+    // href: '/13-predicates-assertions',
+    href: '14-exhaustiveness',
   },
 ];
 
